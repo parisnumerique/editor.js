@@ -1,4 +1,4 @@
-import Paragraph from '../tools/paragraph/dist/bundle';
+// import Paragraph from '../tools/paragraph/dist/bundle';
 import Module from '../__module';
 import _ from '../utils';
 import {
@@ -11,7 +11,7 @@ import {
 } from '../../../types';
 import BoldInlineTool from '../inline-tools/inline-tool-bold';
 import ItalicInlineTool from '../inline-tools/inline-tool-italic';
-import LinkInlineTool from '../inline-tools/inline-tool-link';
+// import LinkInlineTool from '../inline-tools/inline-tool-link';
 import Stub from '../tools/stub';
 
 /**
@@ -429,11 +429,11 @@ export default class Tools extends Module {
     return {
       bold: {class: BoldInlineTool},
       italic: {class: ItalicInlineTool},
-      link: {class: LinkInlineTool},
-      paragraph: {
-        class: Paragraph,
-        inlineToolbar: true,
-      },
+      // link: {class: LinkInlineTool},
+      // paragraph: {
+      //   class: Paragraph,
+      //   inlineToolbar: true,
+      // },
       stub: {class: Stub},
     };
   }

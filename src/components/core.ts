@@ -145,7 +145,8 @@ export default class Core {
     /**
      * If initial Block's Tool was not passed, use the Paragraph Tool
      */
-    this.config.initialBlock = this.config.initialBlock || 'paragraph';
+    // this.config.initialBlock = this.config.initialBlock || 'paragraph';
+    this.config.initialBlock = this.config.initialBlock || 'text';
 
     /**
      * Height of Editor's bottom area that allows to set focus on the last Block

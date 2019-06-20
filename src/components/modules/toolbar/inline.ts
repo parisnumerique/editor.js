@@ -263,12 +263,25 @@ export default class InlineToolbar extends Module {
    * Hides Inline Toolbar
    */
   public close(): void {
+    /**
+     * Check if inline toolbar is already closed
+     */
+    if (!this.opened) {
+      return;
+    }
+
     this.nodes.wrapper.classList.remove(this.CSS.inlineToolbarShowed);
-    this.tools.forEach((toolInstance) => {
-      if (typeof toolInstance.clear === 'function') {
-        toolInstance.clear();
-      }
-    });
+
+    // N.B.: this is mainly useful to remove the fake highlight on link,
+    // but we don't use it in our custom link inline tool
+    /**
+     * Call 'clear' method for Inline Tools (for example, 'link' want to clear input)
+     */
+    // this.tools.forEach((toolInstance: InlineTool) => {
+    //   if (typeof toolInstance.clear === 'function') {
+    //     toolInstance.clear();
+    //   }
+    // });
 
     this.opened = false;
 

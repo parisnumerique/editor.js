@@ -23,9 +23,10 @@ import _ from './utils';
  */
 
 /** Import default tunes */
-import MoveUpTune from './block-tunes/block-tune-move-up';
+import AddTune from './block-tunes/block-tune-add';
 import DeleteTune from './block-tunes/block-tune-delete';
 import MoveDownTune from './block-tunes/block-tune-move-down';
+import MoveUpTune from './block-tunes/block-tune-move-up';
 import SelectionUtils from './selection';
 
 /**
@@ -446,7 +447,7 @@ export default class Block {
    * @return {BlockTune[]}
    */
   public makeTunes(): BlockTune[] {
-    const tunesList = [MoveUpTune, DeleteTune, MoveDownTune];
+    const tunesList = [AddTune, MoveUpTune, MoveDownTune, DeleteTune];
 
     // Pluck tunes list and return tune instances with passed Editor API and settings
     return tunesList.map( (tune: BlockTuneConstructable) => {

@@ -1,11 +1,11 @@
 /*!
  * Editor.js
- * 
+ *
  * @version 2.15.1
- * 
+ *
  * @licence Apache-2.0
  * @author CodeX <https://codex.so>
- * 
+ *
  * @uses html-janitor
  * @licence Apache-2.0 (https://github.com/guardian/html-janitor/blob/master/LICENSE)
  */

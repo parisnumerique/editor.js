@@ -9,8 +9,8 @@ import {
   ToolConstructable,
   ToolSettings,
 } from '../../../types';
-import BoldInlineTool from '../inline-tools/inline-tool-bold';
-import ItalicInlineTool from '../inline-tools/inline-tool-italic';
+// import BoldInlineTool from '../inline-tools/inline-tool-bold';
+// import ItalicInlineTool from '../inline-tools/inline-tool-italic';
 // import LinkInlineTool from '../inline-tools/inline-tool-link';
 import Stub from '../tools/stub';
 
@@ -438,8 +438,8 @@ export default class Tools extends Module {
    */
   get internalTools() {
     return {
-      bold: {class: BoldInlineTool},
-      italic: {class: ItalicInlineTool},
+      // bold: {class: BoldInlineTool},
+      // italic: {class: ItalicInlineTool},
       // link: {class: LinkInlineTool},
       // paragraph: {
       //   class: Paragraph,

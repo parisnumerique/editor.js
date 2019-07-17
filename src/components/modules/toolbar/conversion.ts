@@ -1,6 +1,7 @@
 import Module from '../../__module';
 import $ from '../../dom';
-import {BlockToolConstructable} from '../../../../types';
+// import {BlockToolConstructable} from '../../../../types';
+import {BlockToolConstructable, SanitizerConfig} from '../../../../types';
 import _ from '../../utils';
 import {SavedData} from '../../../types-internal/block-data';
 import Block from '../../block';
@@ -166,10 +167,10 @@ export default class ConversionToolbar extends Module {
     /**
      * Clean exported data with replacing sanitizer config
      */
-    const cleaned: string = this.Editor.Sanitizer.clean(
-      exportData,
-      replacingTool.sanitize,
-    );
+    // const cleaned: string = this.Editor.Sanitizer.clean(
+    //   exportData,
+    //   replacingTool.sanitize,
+    // );
 
     /**
      * «import» property can be Function or String
@@ -180,8 +181,14 @@ export default class ConversionToolbar extends Module {
     const importProp = replacingTool.conversionConfig.import;
 
     if (typeof importProp === 'function') {
-      newBlockData = importProp(cleaned);
+      // Sanitization should be done in the import function
+      // newBlockData = importProp(cleaned);
+      newBlockData = importProp(exportData);
     } else if (typeof importProp === 'string') {
+      // Retrieve sanitize config corresponding to import property
+      const sanitzeConfig = this.Editor.Sanitizer.composeToolConfig(replacingToolName)[importProp] as SanitizerConfig;
+      const cleaned: string = this.Editor.Sanitizer.clean(exportData, sanitzeConfig);
+
       newBlockData[importProp] = cleaned;
     } else {
       _.log('Conversion «import» property must be a string or function. ' +

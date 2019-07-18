@@ -11,4 +11,9 @@ export interface Toolbar {
    * Opens Toolbar
    */
   open(): void;
+
+  /**
+   * Show Plus button
+   */
+  showPlus(): void;
 }

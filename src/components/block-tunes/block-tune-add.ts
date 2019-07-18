@@ -55,9 +55,9 @@ export default class AddTune implements BlockTune {
   public handleClick(event: MouseEvent, button: HTMLElement): void {
     this.api.blocks.insert();
 
-    this.api.toolbar.close();
-
     const currentBlockIndex = this.api.blocks.getCurrentBlockIndex();
     this.api.caret.setToBlock(currentBlockIndex);
+
+    this.api.toolbar.showPlus();
   }
 }

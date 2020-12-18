@@ -18,9 +18,10 @@ import BlockAPI from './api';
 import { ToolType } from '../modules/tools';
 
 /** Import default tunes */
-import MoveUpTune from '../block-tunes/block-tune-move-up';
+import AddTune from '../block-tunes/block-tune-add';
 import DeleteTune from '../block-tunes/block-tune-delete';
 import MoveDownTune from '../block-tunes/block-tune-move-down';
+import MoveUpTune from '../block-tunes/block-tune-move-up';
 import SelectionUtils from '../selection';
 
 /**
@@ -588,16 +589,20 @@ export default class Block {
   public makeTunes(): BlockTune[] {
     const tunesList = [
       {
+        name: 'add',
+        Tune: AddTune,
+      },
+      {
         name: 'moveUp',
         Tune: MoveUpTune,
       },
       {
-        name: 'delete',
-        Tune: DeleteTune,
-      },
-      {
         name: 'moveDown',
         Tune: MoveDownTune,
+      },
+      {
+        name: 'delete',
+        Tune: DeleteTune,
       },
     ];
 

@@ -32,6 +32,9 @@
     }
   },
   "blockTunes": {
+    "add": {
+      "Add": ""
+    },
     "delete": {
       "Delete": ""
     },

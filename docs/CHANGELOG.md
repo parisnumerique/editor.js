@@ -2,6 +2,7 @@
 
 ### paris
 
+- Add BlockTuneAdd button
 - Add ShowPlus method to toolbar API
 - Avoid focusing last block on click
   - default behavior when document is touched outside any block (`src/components/modules/ui.ts`)

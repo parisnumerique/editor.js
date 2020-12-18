@@ -15,6 +15,7 @@ export default class ToolbarAPI extends Module {
     return {
       close: (): void => this.close(),
       open: (): void => this.open(),
+      showPlus: (): void => this.showPlus(),
     };
   }
 
@@ -30,5 +31,14 @@ export default class ToolbarAPI extends Module {
    */
   public close(): void {
     this.Editor.Toolbar.close();
+  }
+
+  /**
+   * Show plus button on current block
+   */
+  public showPlus(): void {
+    this.Editor.BlockManager.highlightCurrentNode();
+    this.Editor.Toolbar.move();
+    this.Editor.Toolbar.plusButton.show();
   }
 }

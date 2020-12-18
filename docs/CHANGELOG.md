@@ -1,5 +1,11 @@
 # Changelog
 
+### paris
+
+- Avoid focusing last block on click
+  - default behavior when document is touched outside any block (`src/components/modules/ui.ts`)
+
+
 ### 2.19.1
 
 - `Improvements` - The [Cypress](https://www.cypress.io) was integrated as the end-to-end testing framework

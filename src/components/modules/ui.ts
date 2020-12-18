@@ -633,14 +633,7 @@ export default class UI extends Module<UINodes> {
        * Highlight Current Node
        */
       this.Editor.BlockManager.highlightCurrentNode();
-    } catch (e) {
-      /**
-       * If clicked outside first-level Blocks and it is not RectSelection, set Caret to the last empty Block
-       */
-      if (!this.Editor.RectangleSelection.isRectActivated()) {
-        this.Editor.Caret.setToTheLastBlock();
-      }
-    }
+    } catch (e) {}
 
     /**
      * Move and open toolbar

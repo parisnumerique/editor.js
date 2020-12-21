@@ -18,7 +18,6 @@ import {
   Events,
   InlineToolbar,
   Listeners,
-  Notifier,
   ReadOnly,
   Sanitizer,
   Saver,
@@ -82,7 +81,6 @@ export interface API {
   caret: Caret;
   events: Events;
   listeners: Listeners;
-  notifier: Notifier;
   sanitizer: Sanitizer;
   saver: Saver;
   selection: Selection;

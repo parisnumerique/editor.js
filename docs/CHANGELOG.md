@@ -2,6 +2,8 @@
 
 ### paris
 
+- Remove codex-notifier dependency and Notifier API
+  - it is only used by unused tools
 - Remove unused internal tools : `Paragraph`, `Bold`, `Italic`, `Link`
 - Add BlockTuneAdd button
 - Add ShowPlus method to toolbar API

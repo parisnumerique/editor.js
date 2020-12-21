@@ -24,7 +24,6 @@ import {
   Selection,
   Styles,
   Toolbar,
-  Tooltip,
   I18n,
 } from './api';
 
@@ -87,7 +86,6 @@ export interface API {
   styles: Styles;
   toolbar: Toolbar;
   inlineToolbar: InlineToolbar;
-  tooltip: Tooltip;
   i18n: I18n;
   readOnly: ReadOnly;
 }

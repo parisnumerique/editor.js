@@ -2,6 +2,8 @@
 
 ### paris
 
+- Remove codex-tooltip dependency in favor of CSS-only tooltip
+  - remove unused tooltips
 - Remove codex-notifier dependency and Notifier API
   - it is only used by unused tools
 - Remove unused internal tools : `Paragraph`, `Bold`, `Italic`, `Link`

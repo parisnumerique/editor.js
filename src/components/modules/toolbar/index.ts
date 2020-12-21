@@ -268,18 +268,6 @@ export default class Toolbar extends Module<ToolbarNodes> {
     }, false);
 
     /**
-     * Add events to show/hide tooltip for plus button
-     */
-    const tooltipContent = $.make('div');
-
-    tooltipContent.appendChild(document.createTextNode(I18n.ui(I18nInternalNS.ui.toolbar.toolbox, 'Add')));
-    tooltipContent.appendChild($.make('div', this.CSS.plusButtonShortcut, {
-      textContent: '⇥ Tab',
-    }));
-
-    this.Editor.Tooltip.onHover(this.nodes.plusButton, tooltipContent);
-
-    /**
      * Fill Actions Zone:
      *  - Settings Toggler
      *  - Remove Block Button
@@ -292,14 +280,6 @@ export default class Toolbar extends Module<ToolbarNodes> {
     $.append(this.nodes.settingsToggler, settingsIcon);
     $.append(this.nodes.blockActionsButtons, this.nodes.settingsToggler);
     $.append(this.nodes.actions, this.nodes.blockActionsButtons);
-
-    this.Editor.Tooltip.onHover(
-      this.nodes.settingsToggler,
-      I18n.ui(I18nInternalNS.ui.blockTunes.toggler, 'Click to tune'),
-      {
-        placement: 'top',
-      }
-    );
 
     /**
      * Appending Toolbar components to itself

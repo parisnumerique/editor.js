@@ -151,4 +151,10 @@
       }
     }
   };
+
+  /**
+   * Tooltip
+   */
+  --tooltip-color-bg: #1D202B;
+  --tooltip-color-font: #CDD1E0;
 }

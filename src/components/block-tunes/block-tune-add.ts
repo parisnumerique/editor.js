@@ -52,11 +52,6 @@ export default class AddTune implements BlockTune {
       false
     );
 
-    /**
-     * Enable tooltip module on button
-     */
-    this.api.tooltip.onHover(addButton, this.api.i18n.t('Add'));
-
     return addButton;
   }
 
@@ -73,7 +68,5 @@ export default class AddTune implements BlockTune {
     this.api.caret.setToBlock(this.api.blocks.getCurrentBlockIndex());
     // show Plus button
     this.api.toolbar.showPlus();
-    // hide tooltip
-    this.api.tooltip.hide();
   }
 }

@@ -1,0 +1,105 @@
+/**
+ * Tooltip
+ * source: https://dev.to/kallmanation/building-a-tooltip-with-only-css-4k9
+ */
+.codex-editor {
+  [data-tooltip][aria-label] {
+    position: relative;
+  }
+
+  [data-tooltip][aria-label]::before,
+  [data-tooltip][aria-label]::after {
+    display: none;
+    pointer-events: none;
+    position: absolute;
+    z-index: 1;
+  }
+  [data-tooltip][aria-label]::before {
+    background: var(--tooltip-color-bg);
+    border-radius: 5px;
+    content: attr(aria-label);
+    color: var(--tooltip-color-font);
+    font-size: 12px;
+    line-height: 1.1em;
+    padding: 6px 10px;
+    white-space: pre;
+  }
+  [data-tooltip][aria-label]::after {
+    border-color: var(--tooltip-color-bg);
+    border-style: solid;
+    border-width: 0;
+    content: "";
+    height: 0;
+    width: 0;
+  }
+
+  /* top & bottom */
+  [data-tooltip^="top"][aria-label]::before,
+  [data-tooltip^="bottom"][aria-label]::before {
+    right: 50%;
+    transform: translateX(50%);
+  }
+  [data-tooltip^="top"][aria-label]::after,
+  [data-tooltip^="bottom"][aria-label]::after {
+    border-right-width: 5px;
+    border-right-color: transparent;
+    border-left-width: 5px;
+    border-left-color: transparent;
+    right: 50%;
+    transform: translateX(50%);
+  }
+  /* top */
+  [data-tooltip^="top"][aria-label]::before {
+    bottom: calc(7px + 100%);
+  }
+  [data-tooltip^="top"][aria-label]::after {
+    border-top-width: 5px;
+    bottom: calc(2px + 100%);
+  }
+  /* bottom */
+  [data-tooltip^="bottom"][aria-label]::before {
+    top: calc(7px + 100%);
+  }
+  [data-tooltip^="bottom"][aria-label]::after {
+    border-bottom-width: 5px;
+    top: calc(2px + 100%);
+  }
+
+  /* left & right */
+  [data-tooltip^="left"][aria-label]::before,
+  [data-tooltip^="right"][aria-label]::before {
+    bottom: 50%;
+    transform: translateY(50%);
+  }
+  [data-tooltip^="left"][aria-label]::after,
+  [data-tooltip^="right"][aria-label]::after {
+    border-top-width: 5px;
+    border-top-color: transparent;
+    border-bottom-width: 5px;
+    border-bottom-color: transparent;
+    bottom: 50%;
+    transform: translateY(50%);
+  }
+  /* left */
+  [data-tooltip^="left"][aria-label]::before {
+    right: calc(7px + 100%);
+  }
+  [data-tooltip^="left"][aria-label]::after {
+    border-left-width: 5px;
+    right: calc(2px + 100%);
+  }
+  /* right */
+  [data-tooltip^="right"][aria-label]::before {
+    left: calc(7px + 100%);
+  }
+  [data-tooltip^="right"][aria-label]::after {
+    border-right-width: 5px;
+    left: calc(2px + 100%);
+  }
+
+  /* display on hover */
+  [data-tooltip][aria-label]:hover::before,
+  [data-tooltip][aria-label]:hover::after {
+    display: block;
+  }
+}

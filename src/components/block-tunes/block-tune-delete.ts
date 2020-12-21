@@ -67,11 +67,6 @@ export default class DeleteTune implements BlockTune {
     this.nodes.button.appendChild($.svg('cross', 12, 12));
     this.api.listeners.on(this.nodes.button, 'click', (event: MouseEvent) => this.handleClick(event), false);
 
-    /**
-     * Enable tooltip module
-     */
-    this.api.tooltip.onHover(this.nodes.button, this.api.i18n.t('Delete'));
-
     return this.nodes.button;
   }
 
@@ -102,7 +97,6 @@ export default class DeleteTune implements BlockTune {
 
       this.api.blocks.delete();
       this.api.toolbar.close();
-      this.api.tooltip.hide();
 
       /**
        * Prevent firing ui~documentClicked that can drop currentBlock pointer

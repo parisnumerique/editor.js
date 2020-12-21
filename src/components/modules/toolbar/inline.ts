@@ -498,10 +498,9 @@ export default class InlineToolbar extends Module<InlineToolbarNodes> {
       });
     });
 
-    this.Editor.Tooltip.onHover(this.nodes.conversionToggler, I18n.ui(I18nInternalNS.ui.inlineToolbar.converter, 'Convert to'), {
-      placement: 'top',
-      hidingDelay: 100,
-    });
+    // add attributes to display tooltip
+    this.nodes.conversionToggler.setAttribute('data-tooltip', 'top');
+    this.nodes.conversionToggler.setAttribute('aria-label', I18n.ui(I18nInternalNS.ui.inlineToolbar.converter, 'Convert to'));
   }
 
   /**
@@ -596,7 +595,6 @@ export default class InlineToolbar extends Module<InlineToolbarNodes> {
     const {
       Listeners,
       Tools,
-      Tooltip,
     } = this.Editor;
 
     const button = tool.render();
@@ -661,27 +659,18 @@ export default class InlineToolbar extends Module<InlineToolbarNodes> {
       this.enableShortcuts(tool, shortcut);
     }
 
-    /**
-     * Enable tooltip module on button
-     */
-    const tooltipContent = $.make('div');
-    const toolTitle = I18n.t(
+    // add attributes to display tooltip
+    let toolTitle = I18n.t(
       I18nInternalNS.toolNames,
       Tools.toolsClasses[toolName][Tools.INTERNAL_SETTINGS.TITLE] || _.capitalize(toolName)
     );
 
-    tooltipContent.appendChild($.text(toolTitle));
-
     if (shortcut) {
-      tooltipContent.appendChild($.make('div', this.CSS.inlineToolbarShortcut, {
-        textContent: _.beautifyShortcut(shortcut),
-      }));
+      toolTitle = `${toolTitle} (${_.beautifyShortcut(shortcut)})`;
     }
 
-    Tooltip.onHover(button, tooltipContent, {
-      placement: 'top',
-      hidingDelay: 100,
-    });
+    button.setAttribute('data-tooltip', 'top');
+    button.setAttribute('aria-label', toolTitle);
   }
 
   /**

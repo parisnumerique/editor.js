@@ -46,9 +46,6 @@ export default class Toolbox extends Module<ToolboxNodes> {
       toolboxButtonActive: 'ce-toolbox__button--active',
       toolboxOpened: 'ce-toolbox--opened',
       openedToolbarHolderModifier: 'codex-editor--toolbox-opened',
-
-      buttonTooltip: 'ce-toolbox-button-tooltip',
-      buttonShortcut: 'ce-toolbox-button-tooltip__shortcut',
     };
   }
 
@@ -229,21 +226,18 @@ export default class Toolbox extends Module<ToolboxNodes> {
       this.toolButtonActivate(event, toolName);
     });
 
-    /**
-     * Add listeners to show/hide toolbox tooltip
-     */
-    const tooltipContent = this.drawTooltip(toolName);
-
-    this.Editor.Tooltip.onHover(button, tooltipContent, {
-      placement: 'bottom',
-      hidingDelay: 200,
-    });
+    // add attributes to display tooltip
+    let name = I18n.t(I18nInternalNS.toolNames, (userToolboxSettings && userToolboxSettings.title) || toolToolboxSettings.title || toolName);
 
     const shortcut = this.getToolShortcut(toolName, tool);
-
     if (shortcut) {
       this.enableShortcut(tool, toolName, shortcut);
+
+      name = `${name } (${_.beautifyShortcut(shortcut)})`;
     }
+
+    button.setAttribute('data-tooltip', 'bottom');
+    button.setAttribute('aria-label', name);
 
     /** Increment Tools count */
     this.displayedToolsCount++;
@@ -265,37 +259,6 @@ export default class Toolbox extends Module<ToolboxNodes> {
     const userSpecifiedShortcut = toolSettings ? toolSettings[this.Editor.Tools.USER_SETTINGS.SHORTCUT] : null;
 
     return userSpecifiedShortcut || internalToolShortcut;
-  }
-
-  /**
-   * Draw tooltip for toolbox tools
-   *
-   * @param {string} toolName - toolbox tool name
-   * @returns {HTMLElement}
-   */
-  private drawTooltip(toolName: string): HTMLElement {
-    const tool = this.Editor.Tools.available[toolName];
-    const toolSettings = this.Editor.Tools.getToolSettings(toolName);
-    const toolboxSettings = this.Editor.Tools.available[toolName][this.Editor.Tools.INTERNAL_SETTINGS.TOOLBOX] || {};
-    const userToolboxSettings = toolSettings.toolbox || {};
-    const name = I18n.t(I18nInternalNS.toolNames, userToolboxSettings.title || toolboxSettings.title || toolName);
-
-    let shortcut = this.getToolShortcut(toolName, tool);
-
-    const tooltip = $.make('div', this.CSS.buttonTooltip);
-    const hint = document.createTextNode(_.capitalize(name));
-
-    tooltip.appendChild(hint);
-
-    if (shortcut) {
-      shortcut = _.beautifyShortcut(shortcut);
-
-      tooltip.appendChild($.make('div', this.CSS.buttonShortcut, {
-        textContent: shortcut,
-      }));
-    }
-
-    return tooltip;
   }
 
   /**

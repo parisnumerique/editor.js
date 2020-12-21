@@ -158,7 +158,7 @@ export default class Core {
      * If default Block's Tool was not passed, use the Paragraph Tool
      */
     _.deprecationAssert(Boolean(this.config.initialBlock), 'config.initialBlock', 'config.defaultBlock');
-    this.config.defaultBlock = this.config.defaultBlock || this.config.initialBlock || 'paragraph';
+    this.config.defaultBlock = this.config.defaultBlock || this.config.initialBlock;
 
     /**
      * Height of Editor's bottom area that allows to set focus on the last Block

@@ -2,6 +2,7 @@
 
 ### paris
 
+- Remove unused internal tools : `Paragraph`, `Bold`, `Italic`, `Link`
 - Add BlockTuneAdd button
 - Add ShowPlus method to toolbar API
 - Avoid focusing last block on click

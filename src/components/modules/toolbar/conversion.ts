@@ -1,6 +1,6 @@
 import Module from '../../__module';
 import $ from '../../dom';
-import { BlockToolConstructable } from '../../../../types';
+import { BlockToolConstructable, SanitizerConfig } from '../../../../types';
 import * as _ from '../../utils';
 import { SavedData } from '../../../../types/data-formats';
 import Flipper from '../../flipper';
@@ -225,14 +225,6 @@ export default class ConversionToolbar extends Module<ConversionToolbarNodes> {
     }
 
     /**
-     * Clean exported data with replacing sanitizer config
-     */
-    const cleaned: string = this.Editor.Sanitizer.clean(
-      exportData,
-      replacingTool.sanitize
-    );
-
-    /**
      * «import» property can be Function or String
      * function — accept imported string and compose tool data object
      * string — the name of data field to import
@@ -241,9 +233,12 @@ export default class ConversionToolbar extends Module<ConversionToolbarNodes> {
     const importProp = replacingTool[INTERNAL_SETTINGS.CONVERSION_CONFIG].import;
 
     if (_.isFunction(importProp)) {
-      newBlockData = importProp(cleaned);
+      // Sanitization should be done in the import function
+      newBlockData = importProp(exportData);
     } else if (_.isString(importProp)) {
-      newBlockData[importProp] = cleaned;
+      // Retrieve sanitize config corresponding to import property
+      const sanitizeConfig = this.Editor.Sanitizer.composeToolConfig(replacingToolName)[importProp] as SanitizerConfig;
+      newBlockData[importProp] = this.Editor.Sanitizer.clean(exportData, sanitizeConfig);
     } else {
       _.log('Conversion «import» property must be a string or function. ' +
         'String means key of tool data to import. Function accepts a imported string and return composed tool data.');

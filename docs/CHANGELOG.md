@@ -2,6 +2,8 @@
 
 ### paris
 
+- Fix sanitization on block conversion
+  - sanitization is made based on the sanitization config of the import property
 - Remove codex-tooltip dependency in favor of CSS-only tooltip
   - remove unused tooltips
 - Remove codex-notifier dependency and Notifier API
